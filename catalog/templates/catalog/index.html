@@ -1,0 +1,34 @@
+<!-- V__I__C__T__O__R_______________________________________________________________Dr.-->
+
+{% extends 'catalog/base_generic.html' %}
+<!------------------------------------------------------------------------------------------>
+
+{% block content %}
+
+    <style>
+
+        h1{
+            color: rgb(50, 165, 165);
+        }
+        
+        h2{
+            color: rgb(58, 205, 205);
+        }
+        
+    </style>
+<!--------------------------->
+    <h1> library home </h1>
+        <em> welcom  library iman django website </em>
+    <!--------------------------->
+        <h2> dynamic content </h2>
+
+            <p> following record counts </p>
+                <ul>
+                    <li><strong> Books: </strong> {{num_books}} </li>
+                    <li><strong> Copies: </strong> {{num_instances}} </li>
+                    <li><strong> Copies available: </strong> {{num_instances_available}} </li>
+                    <li><strong> Authors: </strong> {{num_authors}} </li>
+                </ul>
+
+{% endblock %}
+<!------------------------------------------------------------------------------------------>

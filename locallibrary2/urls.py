@@ -1,3 +1,5 @@
+# V__I__C__T__O__R_______________________________________________________________Dr.
+
 """
 URL configuration for locallibrary2 project.
 
@@ -14,14 +16,21 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+#_________________________________________________________________________________Dr.
 from django.contrib import admin
 from django.urls import path , include
 from django.conf import settings
 from django.conf.urls.static import static
 
+#_________________________________________________________________________________Dr.
 urlpatterns = [
     path('admin/', admin.site.urls),
+    #_________________________
     path('catalog/', include('catalog.urls'))
 ]
-
+    #_________________________
 urlpatterns += static(settings.STATIC_URL , document_root= settings.STATIC_ROOT)
+    #_________________________
+urlpatterns += [path('accounts/',include('django.contrib.auth.urls') )]
+
+#_________________________________________________________________________________Dr.
