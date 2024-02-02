@@ -6,7 +6,7 @@ from django.shortcuts import render , get_object_or_404
 from django.views import generic
 from . import models
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.urls import reverse 
+from django.urls import reverse, reverse_lazy 
 from django.http import HttpResponse , HttpResponseRedirect
 import datetime 
 from django.contrib.auth.decorators import permission_required
@@ -42,6 +42,11 @@ class AuthorListView ( generic.ListView ) :
     template_name = 'catalog/author_list.html'
     
 #_________________________________________________________________________________Dr.
+class AuthorDetailView ( generic.DetailView ):
+    model = models.Author
+    template_name = 'catalog/author_detail.html'
+
+#_________________________________________________________________________________Dr.
 class LoanedBooksByUserListView ( LoginRequiredMixin,generic.ListView ):
     model= models.BookInstance
     template_name = 'catalog/bookinstance_list_borrowered_user.html'
@@ -74,6 +79,20 @@ def renew_book_librarian(request, pk):
         form = RenewBookForm(initial={'renewal_date': proposed_renewal_date,})
     #_________________________
     return render(request, 'catalog/book_renew_librarian.html', {'form': form, 'bookinst':book_inst})
+
+#_________________________________________________________________________________Dr.
+class AuthorCreate ( generic.CreateView ):
+    model = models.Author
+    fields = '__all__' 
+    initial = {'date_of_death':'05/01/2018'}
+    #_________________________
+class AuthorUpdate ( generic.UpdateView ):
+    model = models.Author
+    fields = ['first_name' , 'last_name' , 'birth_day' , 'death_day']
+    #_________________________
+class AuthorDelete ( generic.DeleteView ):
+    model = models.Author
+    success_url = reverse_lazy('catalog:authors')
 
 #_________________________________________________________________________________Dr.
 

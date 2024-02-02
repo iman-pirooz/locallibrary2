@@ -20,6 +20,11 @@ urlpatterns = [
                             views.AuthorListView.as_view() ,
                             name= 'author' 
                 ),
+        
+        re_path ( r'^author/$' , 
+                    views.AuthorDetailView.as_view() ,
+                    name= 'author_detail' 
+                ),
         #_________________________
         re_path ( r'^mybooks/$' , 
                             views.LoanedBooksByUserListView.as_view() , 
@@ -31,6 +36,19 @@ urlpatterns = [
                                             name='renew-book-librarian'
                 ),
         #_________________________
+        re_path ( r'^author/create/$' , 
+                                    views.AuthorCreate.as_view() , 
+                                    name= 'author_create' ),
+        #_________________________
+        re_path ( r'^author/(?P<pk>\d+)/update/$', 
+                                            views.AuthorUpdate.as_view() , 
+                                            name= 'author_update' 
+                ),
+        #_________________________
+        re_path ( r'^author/(?P<pk>\d+)/delete/$', 
+                                            views.AuthorDelete.as_view() , 
+                                            name= 'author_delete' 
+                ),
 ]
 
 #_________________________________________________________________________________Dr.

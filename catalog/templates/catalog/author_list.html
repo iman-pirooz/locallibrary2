@@ -7,11 +7,12 @@
 
     {% for author in author_list %}  
 
-        <h3> AUTHORS : {{author.last_name}} </h3>
-        <p> first name : {{ author.first_name }} </p>
+        <h3><a href="{% url 'catalog:author_detail' %}">{{author.first_name}} {{ author.last_name}}</a></h3>
+        <p> first name : {{ author.first_name }} </p> 
         <p> last name : {{ author.last_name }} </p>
         <p> birth day : {{ author.birth_day }} </p>
         <p> death day : {{ author.death_day }} </p>
+        <p> id : {{ author.id }} </p>
         <hr>
     {% endfor %}
 

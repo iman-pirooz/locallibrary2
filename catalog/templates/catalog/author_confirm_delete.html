@@ -1,0 +1,15 @@
+{% extends 'catalog/base_generic.html' %}
+
+{% block content %}
+
+<h1> delete author</h1>
+    <p> are you sure want delete author? {{ author }} </p>
+
+    <form action="" method="post">
+        {% csrf_token %}
+]
+        <input type="submit" action="" value="Yes, delete">
+    </form>
+
+
+{% endblock %}
